@@ -28,6 +28,9 @@ export default class Boot extends Phaser.Scene{
 
         //Cargamos las spritesheets
         this.load.spritesheet('monkey', 'monkey_spritesheet.png', {frameWidth: 100, frameHeight: 120});
+
+        this.load.setPath('assets/audio');
+        this.load.audio('steal', 'impulse.wav');
     }
     
     create() {

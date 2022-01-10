@@ -41,6 +41,9 @@ export default class level extends Phaser.Scene{
         //Escondites
         this.spawnHideouts();
 
+        //Audio
+        this.stealSound = this.sound.add('steal');
+
         //Input para quitar banana
         this.space = this.input.keyboard.addKey('SPACE');
         this.input.keyboard.on('keydown-ESC', () => {this.pause();});
@@ -121,11 +124,13 @@ export default class level extends Phaser.Scene{
             if(player.hasBanana()){ //Si el jugador tiene la banana, el enrmigo se lo roba){
                 player.dropBanana();
                 enemy.pickUpBanana();
+                this.stealSound.play();
 
                 //Mandamos a cada enemigo a un nuveo escondite
                 this.enemies.getChildren().forEach(function(enemy){
                     enemy.pickNextHideout();
                     enemy.changeToNextHideout();
+                    
                 }, this);
             }
             else if(Phaser.Input.Keyboard.JustDown(this.space)){
