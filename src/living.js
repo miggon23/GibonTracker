@@ -22,49 +22,49 @@ export default class Living extends Phaser.GameObjects.Sprite{
         this.banana = false;
     }
 
-    createAnimations() {
-        this.scene.anims.create({
-            key: 'monkey_right',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 0, end: 2 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
+    // createAnimations() {
+    //     this.scene.anims.create({
+    //         key: 'monkey_right',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 0, end: 2 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
 
-        this.scene.anims.create({
-            key: 'monkey_up',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 3, end: 5 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
+    //     this.scene.anims.create({
+    //         key: 'monkey_up',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 3, end: 5 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
 
-        this.scene.anims.create({
-            key: 'monkey_down',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 6, end: 8 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
+    //     this.scene.anims.create({
+    //         key: 'monkey_down',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 6, end: 8 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
 
-        this.scene.anims.create({
-            key: 'monkey_right_banana',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 9, end: 11 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
+    //     this.scene.anims.create({
+    //         key: 'monkey_right_banana',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 9, end: 11 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
 
-        this.scene.anims.create({
-            key: 'monkey_up_banana',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 12, end: 14 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
+    //     this.scene.anims.create({
+    //         key: 'monkey_up_banana',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 12, end: 14 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
 
-        this.scene.anims.create({
-            key: 'monkey_down_banana',
-            frames: this.anims.generateFrameNumbers('monkey', { start: 15, end: 17 }),
-            frameRate: Data.animFrameRate,
-            repeat: 0,
-        });
-    }
+    //     this.scene.anims.create({
+    //         key: 'monkey_down_banana',
+    //         frames: this.anims.generateFrameNumbers('monkey', { start: 15, end: 17 }),
+    //         frameRate: Data.animFrameRate,
+    //         repeat: 0,
+    //     });
+    // }
 
     playAnimations(){
         let velX = this.body.velocity.x;

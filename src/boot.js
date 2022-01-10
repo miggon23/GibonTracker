@@ -1,3 +1,5 @@
+import Data from './data.js'
+
 export default class Boot extends Phaser.Scene{
 
     /**
@@ -27,8 +29,54 @@ export default class Boot extends Phaser.Scene{
         //Cargamos las spritesheets
         this.load.spritesheet('monkey', 'monkey_spritesheet.png', {frameWidth: 100, frameHeight: 120});
     }
-
+    
     create() {
+        this.createAnimations();
         this.scene.start('menu');
     }
+
+    createAnimations() {
+        this.anims.create({
+            key: 'monkey_right',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 0, end: 2 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+
+        this.anims.create({
+            key: 'monkey_up',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 3, end: 5 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+
+        this.anims.create({
+            key: 'monkey_down',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 6, end: 8 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+
+        this.anims.create({
+            key: 'monkey_right_banana',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 9, end: 11 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+
+        this.anims.create({
+            key: 'monkey_up_banana',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 12, end: 14 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+
+        this.anims.create({
+            key: 'monkey_down_banana',
+            frames: this.anims.generateFrameNumbers('monkey', { start: 15, end: 17 }),
+            frameRate: Data.animFrameRate,
+            repeat: 0,
+        });
+    }
+
 }

@@ -20,8 +20,6 @@ export default class Enemy extends Living{
         //Cambia el tamaño del collider del objeto. true es para mantener el centro del objeto:
         this.body.setOffset(25, 50);
         this.body.setSize(this.displayWidth * 0.55, this.displayWidth * 0.6, false);
-
-        this.createAnimations();
     }
 
     
