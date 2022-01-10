@@ -41,7 +41,7 @@ const Data = {
     ],
     maxEnemies : 8,
     bananas: 1,
-    gameDuration: 1000 * 60 * 1.5, // milisg/seg/minutes 
+    gameDuration: 1000 * 60 * 0, // milisg/seg/minutes 
     delayAfterTimeReached: 3000, 
     animFrameRate: 10,
 }

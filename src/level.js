@@ -1,8 +1,9 @@
-import Player from './player.js'
-import GameZone from './gamezone.js'
-import Enemy from './enemy.js'
-import Hideout from './hideout.js'
-import Data from './data.js'
+import Player from './player.js';
+import GameZone from './gamezone.js';
+import Enemy from './enemy.js';
+import Hideout from './hideout.js';
+import Data from './data.js';
+import Pause from './pause.js';
 
 export default class level extends Phaser.Scene{
 
@@ -42,15 +43,19 @@ export default class level extends Phaser.Scene{
 
         //Input para quitar banana
         this.space = this.input.keyboard.addKey('SPACE');
+        this.input.keyboard.on('keydown-ESC', () => {this.pause();});
 
         //Enemigos
         for(let i = 0; i < Data.maxEnemies; i++){
             new Enemy(this, this.gameZone.x, this.gameZone.y, this.enemies, Data.enemies, this.player);
         }
         
+        //Da una banana a un enemigo hasta llegar al máximo de bananas
         for(let i = 0; i < Data.bananas; i++){
             this.giveBanana();
         }
+
+        this.overlapEnemyPlayer();
         
         //Activamos los eventos overlap una vez haya pasado la animación inicial
         this.time.addEvent({
@@ -58,9 +63,7 @@ export default class level extends Phaser.Scene{
             callback: this.overlapBetweenEnemies, 
             callbackScope: this,
         })
-
-        this.overlapEnemyPlayer();
-     
+  
         this.time.addEvent({
             delay: 2000,
             callback: this.startPlaying, 
@@ -101,6 +104,11 @@ export default class level extends Phaser.Scene{
 
     startPlaying(){
         this.playing = true;
+    }
+
+    pause(){
+        this.scene.launch('pause');
+        this.scene.pause();       
     }
 
     /**
@@ -161,10 +169,14 @@ export default class level extends Phaser.Scene{
     }
 
     showEndImage() {
-        let imageTime = this.add.image((this.cameras.main.displayWidth * 0.5) - 60, (this.cameras.main.displayHeight * 0.5) - 60, 'time').setDepth(50)
-        imageTime.setScrollFactor(0);
-        imageTime.setScale(1.4, 1.6);
-        imageTime.setAlpha(0.1);
+        let imageTime = this.add.image((this.cameras.main.displayWidth * 0.5), (this.cameras.main.displayHeight * 0.5), 'time')
+        .setDepth(10000)
+        .setOrigin(0.5, 0.5)
+        .setScrollFactor(0)
+        .setAlpha(0);
+
+        imageTime.displayWidth = this.cameras.main.displayWidth;
+        imageTime.displayHeight = this.cameras.main.displayHeight;
         //Tween para un fade in
         this.tweens.add({
             targets: imageTime,

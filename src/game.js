@@ -2,6 +2,7 @@ import Boot from './boot.js';
 import Level from './level.js';
 import End from './end.js';
 import Menu from './menu.js';
+import Pause from './pause.js';
 
 /**
  * Configuración de juego
@@ -14,7 +15,7 @@ let config = {
         // mode: Phaser.Scale.FIT,  
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
-    scene: [Boot, Menu, Level, End],
+    scene: [Boot, Menu, Level, End, Pause],
     physics: { 
         default: 'arcade', 
         arcade: {
